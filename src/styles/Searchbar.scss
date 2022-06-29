@@ -1,0 +1,87 @@
+@import 'variables';
+
+.search-bar {
+  width: 0;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background-color: $background-light;
+  overflow: hidden;
+  transition: all 0.3s;
+  border-right: 1px solid $blue-500;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &--open {
+    width: 30%;
+  }
+  &--closed {
+    width: 0;
+  }
+
+  &__close {
+    fill: $text-secondary;
+    cursor: pointer;
+    height: 3rem;
+    width: 2rem;
+    position: absolute;
+    right: 1rem;
+    transition: all 0.2s;
+    &:hover {
+      fill: $text-primary;
+    }
+  }
+}
+
+.search-box {
+  margin-top: 4rem;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  &__input-container {
+    border: 1px solid $light-grey;
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    margin-right: 0.5rem;
+
+    svg {
+      fill: $text-secondary;
+      height: 1.5rem;
+      width: 1.5rem;
+    }
+  }
+
+  &__input {
+    padding: 15px 10px;
+    outline: none;
+    background: transparent;
+    color: $light-grey;
+    margin-right: 0.5rem;
+    border: none;
+  }
+  &__button {
+    background-color: $blue;
+    color: $light-grey;
+    border: none;
+    padding: 14px 19px;
+    font-size: 1.05rem;
+    transition: all 0.2s;
+    &:hover {
+      background-color: lighten($color: $blue, $amount: 4);
+      cursor: pointer;
+    }
+    &:active {
+      background-color: $blue;
+      transform: scale(0.8);
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .search-bar--open {
+    width: 100%;
+  }
+}

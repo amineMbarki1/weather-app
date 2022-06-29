@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Neucha&family=Raleway:wght@300;400;500;700&family=Roboto:wght@400;700&display=swap');
+
+@import '_variables.scss';
+
+html,
+body {
+  min-height: 100vh;
+  font-family: 'Raleway', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button {
+  border: none;
+  background-color: $dark-grey;
+  color: white;
+  padding: 5px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 1.05rem;
+  @include center();
+  &:hover {
+    background-color: lighten($color: $dark-grey, $amount: 4);
+  }
+  &:active {
+    background-color: $dark-grey;
+    transform: scale(0.9);
+  }
+  svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+.main-container {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 30% 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: 'sidebar main-content';
+}
+
+.main-content {
+  grid-area: main-content;
+  background-color: $background-dark;
+
+  &__container {
+    max-width: 800px;
+    margin: 2rem auto;
+  }
+
+  &__daily-weather {
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 120px 120px 120px 120px 120px;
+    grid-template-rows: 0.2fr;
+    justify-content: space-between;
+  }
+
+  &__highlights {
+    margin-top: 2rem;
+    & > div {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      margin-top: 1rem;
+    }
+    h2 {
+      color: $text-primary;
+    }
+  }
+}
+
+@media (max-width: 1180px) {
+  .main-content__daily-weather {
+    grid-template-columns: 120px 120px 120px;
+    justify-content: center;
+    gap: 3rem;
+  }
+  .main-content__highlights > div {
+    grid-template-columns: 200px 200px;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .main-container {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'sidebar'
+      'main-content';
+  }
+  .main-content__daily-weather {
+    grid-template-columns: 120px 120px;
+    grid-template-rows: 0.2fr;
+    justify-content: center;
+    gap: 3rem;
+  }
+
+  .main-content__highlights > div {
+    grid-template-columns: 300px;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 1rem;
+  }
+}

@@ -1,25 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+
+import Sidebar from './Components/Sidebar';
+import Searchbar from './Components/Searchbar';
+import DailyWeatherItem from './Components/DailyWeatherItem';
+import HighlightItem from './Components/HighlightItem';
+import WeatherProvider from './context/WeatherContext';
+
+import './styles/App.scss';
 
 function App() {
+  const [openSearchbar, setOpenSearchbar] = useState<boolean>(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <WeatherProvider>
+      <div className="App">
+        <div className="main-container">
+          <Searchbar openSearchbar={openSearchbar} setOpenSearchbar={setOpenSearchbar} />
+          <Sidebar openSearchbar={openSearchbar} setOpenSearchbar={setOpenSearchbar} />
+          <main className="main-content">
+            <div className="main-content__container">
+              <section className="main-content__daily-weather">
+                <DailyWeatherItem />
+                <DailyWeatherItem />
+                <DailyWeatherItem />
+                <DailyWeatherItem />
+                <DailyWeatherItem />
+              </section>
+              <section className="main-content__highlights">
+                <h2>Today's Higlights</h2>
+                <div>
+                  <HighlightItem />
+                  <HighlightItem />
+                  <HighlightItem />
+                </div>
+              </section>
+            </div>
+          </main>
+        </div>
+      </div>
+    </WeatherProvider>
   );
 }
 

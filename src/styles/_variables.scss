@@ -1,0 +1,16 @@
+// COLORS
+$background-light: #1e213a;
+$background-dark: #100e1d;
+$text-primary: #e7e7eb;
+$text-secondary: #a09fb1;
+$dark-grey: #6e707a;
+$light-grey: #e7e7eb;
+$blue-500: #2196f3;
+$blue: #3c47e9;
+
+//MIXINS
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
